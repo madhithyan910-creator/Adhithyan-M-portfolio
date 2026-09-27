@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  /* High contrast readable light theme text - never wash out text */
+  html:not(.dark) body {
+    color: #0f172a;
+    background-color: #f8fafc;
+  }
+
+  html.dark body {
+    color: #e6edf3;
+    background-color: #0a0d12;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Light Theme Visibility & Contrast Enhancements:
+   Ensures important text, labels, badges, and cards are crisp and readable in light mode,
+   without washing out text. Dark theme remains 100% identical. */
+html:not(.dark) .text-slate-400 {
+  color: #475569;
+}
+
+html:not(.dark) .text-slate-500 {
+  color: #334155;
+}
+
+html:not(.dark) .text-slate-600 {
+  color: #1e293b;
+}
+
+html:not(.dark) .border-slate-200 {
+  border-color: #cbd5e1;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #64748b;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 150, 165, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 150, 165, 0.5);
+}
+
+/* Print Styles for Clean Recruiter CV Export */
+@media print {
+  nav, footer, .no-print, button, .admin-trigger, .theme-toggle {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #111827 !important;
+    font-size: 11pt !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .page-break-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #resume-section {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+}
